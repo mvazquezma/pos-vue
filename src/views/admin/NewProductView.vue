@@ -74,7 +74,7 @@
                     name="category"
                     validation="required"
                     :validation-messages="{required: 'La categoria es obligatoria'}"
-                    :options="[1,2,3]"
+                    :options="products.categoryOptions"
                     v-model.number="formData.category"
                 />
 
