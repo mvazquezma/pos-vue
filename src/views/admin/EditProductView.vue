@@ -14,7 +14,7 @@
     const docRef = doc(db, 'products', route.params.id)
     const product = useDocument(docRef)
 
-    const { onFileChange,  url, isImageUploaded } = useImage()
+    const { onFileChange, url, isImageUploaded } = useImage()
     const products = useProductsStore()
 
     const formData = reactive({
@@ -34,7 +34,7 @@
 
     const submitHandler = async data => {
         try {
-            await products.updateProduct(docRef, data)
+            await products.updateProduct(docRef, {...data, url})
 
             router.push({name: 'products'})
         } catch (error) {
