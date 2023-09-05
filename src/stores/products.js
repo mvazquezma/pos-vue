@@ -22,6 +22,10 @@ export const useProductsStore = defineStore('products', () => {
         await addDoc( collection( db, 'products'), product)
     }
 
+    async function updateProduct(docRef, product) {
+        console.log(product);
+    }
+
     const categoryOptions = computed(() => {
         const options = [
             {label: 'Seleccione', value: '', attrs: {disabled: true } },
@@ -36,6 +40,7 @@ export const useProductsStore = defineStore('products', () => {
 
     return {
         createProduct,
+        updateProduct,
         productsCollection,
         categoryOptions,
         noResults
