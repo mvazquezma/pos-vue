@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const items = ref([])
 
@@ -9,7 +9,10 @@ export const useCartStore = defineStore('cart', () => {
         items.value.push(item)
     }
 
+    const isCartEmpty = computed(() => items.value.length === 0)
+
     return {
-        addItem
+        addItem,
+        isCartEmpty
     }
 })

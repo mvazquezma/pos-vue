@@ -3,6 +3,7 @@
     import MainNav from '../components/MainNav.vue';
     import ProductCard from '../components/ProductCard.vue';
     import { useProductsStore } from '../stores/products';
+    import ShoppingCart from '../components/ShoppingCart.vue';
 
     const products = useProductsStore()
     const { filteredProducts } = storeToRefs(products)
@@ -27,8 +28,8 @@
             </div>
         </div>
 
-        <aside class="lg:w-2/3 lg:screen lg:overflow-y-scroll pt-10 pb-32 px-10">
-            <p>Carrito aquí</p>
+        <aside class="lg:w-2/3 lg:screen lg:overflow-y-scroll py-24 px-10">
+            <ShoppingCart />
         </aside>
     </main>
     
