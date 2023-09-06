@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 
 const items = ref([])
+const MAX_PRODUCTS = 5
 
 export const useCartStore = defineStore('cart', () => {
 
@@ -11,9 +12,14 @@ export const useCartStore = defineStore('cart', () => {
 
     const isCartEmpty = computed(() => items.value.length === 0)
 
+    const checkProductAvailability = computed(() => {
+        return (product) => product.availability < 5 ? product.availability : MAX_PRODUCTS
+    })
+
     return {
         items,
         addItem,
-        isCartEmpty
+        isCartEmpty,
+        checkProductAvailability
     }
 })

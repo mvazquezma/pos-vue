@@ -1,6 +1,9 @@
 <script setup>
-import { formatCurrency } from '../helpers';
+    import {useCartStore} from '../stores/cart'
+    import { formatCurrency } from '../helpers';
 
+    const cart = useCartStore()
+    
     defineProps({
         item: {
             type: Object
@@ -19,6 +22,15 @@ import { formatCurrency } from '../helpers';
         <div class="flex-auto space-y-2">
             <h3 class="text-gray-900">{{ item.name }}</h3>
             <p>{{ formatCurrency(item.price) }}</p>
+
+            <select
+                class="w-32 text-center p-2 rounded-lg bg-white"
+            >
+                <option 
+                    v-for="n in cart.checkProductAvailability(item)"
+                    :value="n"
+                >{{ n }}</option>
+            </select>
         </div>
     </li>
 </template>
