@@ -27,7 +27,7 @@ import { formatCurrency } from '../helpers';
         <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
             <Amount>
                 <template #label>Subtotal:</template>
-                {{ formatCurrency(300) }}
+                {{ formatCurrency(cart.subtotal) }}
             </Amount>
 
             <Amount>
