@@ -32,7 +32,7 @@ import { formatCurrency } from '../helpers';
 
             <Amount>
                 <template #label>Impuestos:</template>
-                {{ formatCurrency(0) }}
+                {{ formatCurrency(cart.taxes) }}
             </Amount>
 
             <Amount>
