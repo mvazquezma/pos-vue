@@ -1,7 +1,7 @@
 <script setup>
-    import { useCouponsStore } from '../stores/coupons';
+    import { useCouponStore } from '../stores/coupons';
 
-    const store = useCouponsStore()
+    const store = useCouponStore()
 </script>
 
 <template>
