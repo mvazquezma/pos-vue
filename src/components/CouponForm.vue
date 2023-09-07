@@ -1,4 +1,7 @@
 <script setup>
+    import { useCouponsStore } from '../stores/coupons';
+
+    const store = useCouponsStore()
 </script>
 
 <template>
@@ -9,6 +12,7 @@
             type="text"
             placeholder="Ingresa un cupón"
             class="p-2 bg-white border-gray-300 w-full"
+            v-model="store.couponInput"
         >
 
         <button 
