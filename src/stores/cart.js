@@ -5,7 +5,7 @@ import { useFirestore } from "vuefire";
 import { useCouponStore } from "../stores/coupons";
 import { getCurrentDate } from "../helpers";
 
-//const coupon = useCouponStore()
+// const coupon = useCouponStore()
 const db = useFirestore()
 const items = ref([])
 const subtotal = ref(0)
@@ -60,9 +60,21 @@ export const useCartStore = defineStore('cart', () => {
                 total: total.value,
                 date: getCurrentDate()
             })
+
+            // Reiniciar el state
+            $reset()
+            // coupon.$reset()
+            
         } catch (error) {
             console.log(error);
         }
+    }
+
+    function $reset() {
+        items.value = []
+        subtotal.value = 0
+        taxes.value = 0
+        total.value = 0
     }
 
     const isItemInCart = id => items.value.findIndex(item => item.id === id)
