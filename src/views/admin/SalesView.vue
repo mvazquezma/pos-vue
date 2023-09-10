@@ -40,13 +40,16 @@
                 
                 <p v-else class="text-center text-lg">Selecciona una fecha</p>
 
-                <div class="space-y-5">
+                <div v-if="sales.salesCollection.length" class="space-y-5">
                     <SaleDetails 
                         v-for="sale in sales.salesCollection"
                         :key="sale.id"
                         :sale="sale"
                     />
                 </div>
+                <p v-else-if="sales.noSales" class="text-lg text-center">
+                    No hay ventas en este día
+                </p>
             </div>
         </div>
     </div>
