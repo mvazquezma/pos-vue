@@ -1,10 +1,10 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia';
-import { query, collection, where } from 'firebase/firestore';
-import { useFirestore, useCollection } from 'vuefire';
+import { ref, computed } from 'vue'
+import { defineStore } from 'pinia'
+import { query, collection, where } from 'firebase/firestore'
+import { useFirestore, useCollection} from 'vuefire'
 
 export const useSalesStore = defineStore('sales', () => {
-    
+
     const date = ref('')
     const db = useFirestore()
 
@@ -19,9 +19,9 @@ export const useSalesStore = defineStore('sales', () => {
     })
 
     const salesCollection = useCollection(salesSource)
-
+    
     const isDateSelected = computed(() => date.value)
-
+    
     const noSales = computed(() => !salesCollection.length && date.value )
 
     const totalSalesOfDay = computed(() => {

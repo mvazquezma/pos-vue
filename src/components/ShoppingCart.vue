@@ -11,16 +11,15 @@
 </script>
 
 <template>
-    <p v-if="cart.isCartEmpty" class="text-xl text-center text-gray-900">El carrito está vacio</p>
+    <p v-if="cart.isEmpty" class="text-xl text-center text-gray-900">El Carrito esta vacio</p>
 
     <div v-else>
-        <p class="text-4xl font-bold text-gray-900">Resumen de venta</p>
-
-        <ul
+        <p class="text-4xl font-bold text-gray-900">Resumen de Venta</p>
+        <ul 
             role="list"
-            class="mt-6 divide-y divide-gray-200"
+            class="mt-6 divide-y divide-gray-200 "
         >
-            <ShoppingCartItem 
+            <ShoppingCartItem
                 v-for="item in cart.items"
                 :key="item.id"
                 :item="item"
@@ -60,3 +59,4 @@
         </button>
     </div>
 </template>
+

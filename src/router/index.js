@@ -39,7 +39,7 @@ const router = createRouter({
           path: 'ventas',
           name: 'sales',
           component: () => import('../views/admin/SalesView.vue')
-        }
+        },
       ]
     }
   ]
