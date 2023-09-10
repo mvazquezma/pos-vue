@@ -2,6 +2,7 @@
     import { ref } from 'vue' 
     import VueTailwindDatePicker from 'vue-tailwind-datepicker'
     import { useSalesStore } from '../../stores/sales';
+    import SaleDetails from '../../components/SaleDetails.vue'
        
     const sales = useSalesStore()
 
@@ -9,6 +10,8 @@
         date: 'DD/MM/YYYY',
         month: 'MMMM'
     })
+
+    console.log(sales.salesCollection);
 </script>
 
 <template>
@@ -35,12 +38,15 @@
                     <span class="font-black">{{ sales.date }}</span>
                 </p>
                 
-                <p 
-                    v-else
-                    class="text-center text-lg"
-                >
-                    Selecciona una fecha
-                </p>
+                <p v-else class="text-center text-lg">Selecciona una fecha</p>
+
+                <div class="space-y-5">
+                    <SaleDetails 
+                        v-for="sale in sales.salesCollection"
+                        :key="sale.id"
+                        :sale="sale"
+                    />
+                </div>
             </div>
         </div>
     </div>
