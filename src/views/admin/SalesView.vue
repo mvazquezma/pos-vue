@@ -1,8 +1,9 @@
 <script setup>
+    import { ref } from 'vue' 
     import VueTailwindDatePicker from 'vue-tailwind-datepicker'
-    import { ref } from 'vue'
-
-    const date = ref('')
+    import { useSalesStore } from '../../stores/sales';
+       
+    const sales = useSalesStore()
 
     const formatter = ref({
         date: 'DD/MM/YYYY',
@@ -20,14 +21,26 @@
                     i18n="es-es" 
                     as-single
                     no-input
-                    v-model="date"
+                    v-model="sales.date"
                     :formatter="formatter"
                 />
             </div>
 
             <div class="md: w-1/2 lg:w-2/3 space-y-5 lg:h-screen lg:overflow-y-scroll p-5 pb-32">
-                <p>Ventas aqui</p>
-                {{ date }}
+                <p
+                    v-if="sales.isDateSelected"
+                    class="text-center text-ls"
+                >
+                    Ventas de la fecha:
+                    <span class="font-black">{{ sales.date }}</span>
+                </p>
+                
+                <p 
+                    v-else
+                    class="text-center text-lg"
+                >
+                    Selecciona una fecha
+                </p>
             </div>
         </div>
     </div>
